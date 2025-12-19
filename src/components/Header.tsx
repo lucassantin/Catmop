@@ -56,9 +56,13 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+551199999999" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+            <a 
+            href="https://wa.link/vqt47a"
+            target="_blank"
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
               <Phone size={18} />
-              <span className="font-medium">(11) 9999-9999</span>
+              <span className="font-medium">(11) 9 4762-1792</span>
             </a>
             <a href="#contato" className="btn-accent text-sm">
               Solicitar Orçamento

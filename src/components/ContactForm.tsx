@@ -18,14 +18,21 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const message = `
+    Nome: ${formData.name}
+    Email: ${formData.email}
+    Telefone: ${formData.phone}
 
-    toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setIsSubmitting(false);
+    Mensagem:
+    ${formData.message}
+    `;
+
+    const whatsappUrl = `https://wa.me/55119947621792?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, "_blank");
+
+    toast.success("Redirecionando para o WhatsApp...");
   };
 
   return (
@@ -79,7 +86,7 @@ const ContactForm = () => {
           className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground 
                      placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary 
                      transition-all duration-200"
-          placeholder="(11) 99999-9999"
+          placeholder="(11) 9 94762-1792"
         />
       </div>
       <div>

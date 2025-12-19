@@ -60,6 +60,8 @@ const Footer = () => {
                 <li key={link.href}>
                   <a
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-background/70 hover:text-primary transition-colors"
                   >
                     {link.label}
@@ -105,10 +107,12 @@ const Footer = () => {
               <li className="flex items-center gap-3">
                 <Phone size={20} className="text-primary flex-shrink-0" />
                 <a
-                  href="tel:+551199999999"
+                  href="https://wa.link/vqt47a"
                   className="text-background/70 hover:text-primary transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  (11) 9999-9999
+                  (11) 9 94762-1792
                 </a>
               </li>
               <li className="flex items-center gap-3">

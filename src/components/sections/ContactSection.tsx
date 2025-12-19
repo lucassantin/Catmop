@@ -34,10 +34,12 @@ const ContactSection = () => {
                   <div>
                     <p className="font-medium text-card-foreground mb-1">Telefone</p>
                     <a
-                      href="tel:+551199999999"
+                      href="https://wa.link/vqt47a"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      (11) 9999-9999
+                      (11) 9 94762-1792
                     </a>
                   </div>
                 </div>
@@ -86,7 +88,9 @@ const ContactSection = () => {
                 melhores produtos para sua necessidade.
               </p>
               <a
-                href="tel:+551199999999"
+                href="https://wa.link/vqt47a"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-background text-foreground font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity"
               >
                 <Phone size={18} />
