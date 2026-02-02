@@ -1,126 +1,135 @@
-import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { categories } from "@/data/products";
+import logoImg from "@/assets/logo.jpg";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-foreground text-background">
+    <footer className="bg-foreground text-background/90">
+      {/* Main Footer */}
       <div className="section-container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <a href="#home" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-xl">C</span>
-              </div>
-              <span className="font-heading font-bold text-2xl text-background">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Company Info */}
+          <div>
+            <Link to="/" className="flex items-center gap-3 mb-6">
+              <img src={logoImg} alt="Catmop" className="h-10 w-auto rounded" />
+              <span className="font-heading font-bold text-xl text-background">
                 Catmop
               </span>
-            </a>
-            <p className="text-background/70 mb-6 leading-relaxed">
-              Soluções em equipamentos e acessórios de limpeza profissional. 
-              Qualidade e tradição para deixar seus ambientes impecáveis.
+            </Link>
+            <p className="text-background/70 text-sm leading-relaxed mb-6">
+              Há mais de 20 anos desenvolvendo soluções em equipamentos de limpeza 
+              profissional para os mais diversos segmentos do mercado.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               <a
                 href="#"
-                className="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+                className="w-9 h-9 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
                 aria-label="Facebook"
               >
-                <Facebook size={20} />
+                <Facebook size={16} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+                className="w-9 h-9 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
                 aria-label="Instagram"
               >
-                <Instagram size={20} />
+                <Instagram size={16} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center hover:bg-primary transition-colors"
+                className="w-9 h-9 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} />
+                <Linkedin size={16} />
+              </a>
+              <a
+                href="#"
+                className="w-9 h-9 rounded-full bg-background/10 flex items-center justify-center hover:bg-primary transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube size={16} />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Products */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-6">Links Rápidos</h4>
+            <h3 className="font-heading font-bold text-lg mb-5">Produtos</h3>
             <ul className="space-y-3">
-              {[
-                { href: "#home", label: "Home" },
-                { href: "#produtos", label: "Produtos" },
-                { href: "#sobre", label: "Sobre Nós" },
-                { href: "#vantagens", label: "Vantagens" },
-                { href: "#contato", label: "Contato" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-background/70 hover:text-primary transition-colors"
+              {categories.map((category) => (
+                <li key={category.id}>
+                  <Link
+                    to={`/produtos?categoria=${category.slug}`}
+                    className="text-background/70 hover:text-primary transition-colors text-sm"
                   >
-                    {link.label}
-                  </a>
+                    {category.name}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Products */}
+          {/* Institutional */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-6">Produtos</h4>
+            <h3 className="font-heading font-bold text-lg mb-5">Institucional</h3>
             <ul className="space-y-3">
-              {[
-                "Mops e Esfregões",
-                "Refis para Mop",
-                "Cabos para Mop",
-                "Pás Automáticas",
-                "Acessórios de Limpeza",
-              ].map((product) => (
-                <li key={product}>
-                  <a
-                    href="#produtos"
-                    className="text-background/70 hover:text-primary transition-colors"
-                  >
-                    {product}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <Link to="/empresa" className="text-background/70 hover:text-primary transition-colors text-sm">
+                  A Empresa
+                </Link>
+              </li>
+              <li>
+                <Link to="/segmentos" className="text-background/70 hover:text-primary transition-colors text-sm">
+                  Segmentos
+                </Link>
+              </li>
+              <li>
+                <Link to="/materiais" className="text-background/70 hover:text-primary transition-colors text-sm">
+                  Materiais de Apoio
+                </Link>
+              </li>
+              <li>
+                <Link to="/contato" className="text-background/70 hover:text-primary transition-colors text-sm">
+                  Seja um Distribuidor
+                </Link>
+              </li>
+              <li>
+                <Link to="/contato" className="text-background/70 hover:text-primary transition-colors text-sm">
+                  Fale Conosco
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="font-heading font-bold text-lg mb-6">Contato</h4>
+            <h3 className="font-heading font-bold text-lg mb-5">Contato</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin size={20} className="text-primary mt-1 flex-shrink-0" />
-                <span className="text-background/70">
-                  São Paulo - SP, Brasil
+                <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
+                <span className="text-background/70 text-sm">
+                  São Paulo - SP<br />
+                  Brasil
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone size={20} className="text-primary flex-shrink-0" />
+              <li>
                 <a
                   href="https://wa.link/vqt47a"
-                  className="text-background/70 hover:text-primary transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors text-sm"
                 >
-                  (11) 9 94762-1792
+                  <Phone size={18} className="text-primary shrink-0" />
+                  (11) 9 4762-1792
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail size={20} className="text-primary flex-shrink-0" />
+              <li>
                 <a
                   href="mailto:contato@catmop.com.br"
-                  className="text-background/70 hover:text-primary transition-colors"
+                  className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors text-sm"
                 >
+                  <Mail size={18} className="text-primary shrink-0" />
                   contato@catmop.com.br
                 </a>
               </li>
@@ -129,16 +138,19 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Copyright */}
+      {/* Bottom Bar */}
       <div className="border-t border-background/10">
-        <div className="section-container py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-background/60 text-sm">
-              © {currentYear} Catmop. Todos os direitos reservados.
-            </p>
-            <p className="text-background/60 text-sm">
-              Equipamentos e Acessórios de Limpeza Profissional
-            </p>
+        <div className="section-container py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-background/50 text-sm">
+            © {new Date().getFullYear()} Catmop. Todos os direitos reservados.
+          </p>
+          <div className="flex gap-6 text-sm">
+            <a href="#" className="text-background/50 hover:text-background transition-colors">
+              Política de Privacidade
+            </a>
+            <a href="#" className="text-background/50 hover:text-background transition-colors">
+              Termos de Uso
+            </a>
           </div>
         </div>
       </div>
