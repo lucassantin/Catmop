@@ -1,52 +1,77 @@
+import { Link } from "react-router-dom";
+import { ShoppingCart, Check } from "lucide-react";
+import { useQuote } from "@/contexts/QuoteContext";
+import type { Product } from "@/data/products";
+
 interface ProductCardProps {
-  image: string;
-  title: string;
-  description: string;
-  delay?: number;
+  product: Product;
 }
 
-const ProductCard = ({ image, title, description, delay = 0 }: ProductCardProps) => {
+const ProductCard = ({ product }: ProductCardProps) => {
+  const { addItem, isInQuote } = useQuote();
+  const inQuote = isInQuote(product.id);
+
   return (
-    <div
-      className="card-product opacity-0 animate-slide-up"
-      style={{ animationDelay: `${delay}ms`, animationFillMode: "forwards" }}
-    >
-      <div className="aspect-square overflow-hidden bg-secondary">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-        />
-      </div>
-      <div className="p-6">
-        <h3 className="font-heading font-bold text-xl mb-2 text-card-foreground">
-          {title}
-        </h3>
-        <p className="text-muted-foreground mb-4 leading-relaxed">
-          {description}
+    <div className="product-card group">
+      <Link to={`/produto/${product.id}`} className="block">
+        <div className="aspect-square overflow-hidden bg-secondary p-4">
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+      </Link>
+      
+      <div className="p-4">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="badge-sku">{product.sku}</span>
+          {product.new && (
+            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-accent/10 text-accent">
+              Novo
+            </span>
+          )}
+        </div>
+        
+        <Link to={`/produto/${product.id}`}>
+          <h3 className="font-heading font-semibold text-foreground mb-1 line-clamp-2 hover:text-primary transition-colors">
+            {product.name}
+          </h3>
+        </Link>
+        
+        <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+          {product.shortDescription}
         </p>
-        <a
-          href="#contato"
-          className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-200"
-        >
-          Solicitar Orçamento
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="transition-transform"
+        
+        <div className="flex gap-2">
+          <Link
+            to={`/produto/${product.id}`}
+            className="flex-1 text-center px-3 py-2 text-sm font-medium border border-border rounded-md hover:border-primary hover:text-primary transition-colors"
           >
-            <path
-              d="M3.33334 8H12.6667M12.6667 8L8 3.33334M12.6667 8L8 12.6667"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </a>
+            Ver Detalhes
+          </Link>
+          <button
+            onClick={() => addItem(product)}
+            disabled={inQuote}
+            className={`flex items-center justify-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              inQuote
+                ? "bg-accent/10 text-accent cursor-default"
+                : "bg-primary text-primary-foreground hover:bg-primary-dark"
+            }`}
+          >
+            {inQuote ? (
+              <>
+                <Check size={16} />
+                <span className="hidden sm:inline">Adicionado</span>
+              </>
+            ) : (
+              <>
+                <ShoppingCart size={16} />
+                <span className="hidden sm:inline">Adicionar</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
