@@ -130,29 +130,29 @@
 
 @layer components {
   .section-container {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+    @apply container mx-auto px-3 sm:px-4 lg:px-8 max-w-7xl;
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-semibold px-6 py-3 rounded-md 
+    @apply bg-primary text-primary-foreground font-semibold px-5 lg:px-6 py-3 rounded-md 
            transition-all duration-200 hover:bg-primary-dark shadow-sm
-           hover:shadow-md active:scale-[0.98];
+           hover:shadow-md active:scale-[0.98] min-h-[44px] lg:min-h-0;
   }
 
   .btn-accent {
-    @apply bg-accent text-accent-foreground font-semibold px-6 py-3 rounded-md 
+    @apply bg-accent text-accent-foreground font-semibold px-5 lg:px-6 py-3 rounded-md 
            transition-all duration-200 hover:opacity-90 shadow-sm
-           hover:shadow-md active:scale-[0.98];
+           hover:shadow-md active:scale-[0.98] min-h-[44px] lg:min-h-0;
   }
 
   .btn-outline {
-    @apply border-2 border-primary text-primary font-semibold px-6 py-3 rounded-md 
-           transition-all duration-200 hover:bg-primary hover:text-primary-foreground;
+    @apply border-2 border-primary text-primary font-semibold px-5 lg:px-6 py-3 rounded-md 
+           transition-all duration-200 hover:bg-primary hover:text-primary-foreground min-h-[44px] lg:min-h-0;
   }
 
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground font-medium px-6 py-3 rounded-md 
-           transition-all duration-200 hover:bg-muted;
+    @apply bg-secondary text-secondary-foreground font-medium px-5 lg:px-6 py-3 rounded-md 
+           transition-all duration-200 hover:bg-muted min-h-[44px] lg:min-h-0;
   }
 
   .product-card {
@@ -172,27 +172,32 @@
   }
 
   .section-title {
-    @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground;
+    @apply text-xl sm:text-2xl lg:text-4xl font-bold text-foreground;
   }
 
   .section-subtitle {
-    @apply text-base sm:text-lg text-muted-foreground max-w-2xl;
+    @apply text-sm sm:text-base lg:text-lg text-muted-foreground max-w-2xl;
   }
 
   .badge-category {
-    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium
+    @apply inline-flex items-center px-2 lg:px-2.5 py-1 rounded-full text-[10px] lg:text-xs font-medium
            bg-primary/10 text-primary;
   }
 
   .badge-sku {
-    @apply inline-flex items-center px-2 py-0.5 rounded text-xs font-mono
+    @apply inline-flex items-center px-1.5 lg:px-2 py-0.5 rounded text-[10px] lg:text-xs font-mono
            bg-muted text-muted-foreground;
   }
 
   .input-search {
-    @apply w-full bg-secondary border-0 rounded-md px-4 py-2.5 text-sm
+    @apply w-full bg-secondary border-0 rounded-md px-4 py-3 lg:py-2.5 text-base lg:text-sm
            placeholder:text-muted-foreground focus:ring-2 focus:ring-primary
-           focus:outline-none transition-all;
+           focus:outline-none transition-all min-h-[44px] lg:min-h-0;
+  }
+
+  /* Safe area for mobile bottom nav */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
 }
 

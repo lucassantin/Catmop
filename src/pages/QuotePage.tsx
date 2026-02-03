@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Trash2, Plus, Minus, ShoppingCart, ArrowLeft, MessageCircle, Send } from "lucide-react";
+import { Trash2, Plus, Minus, ShoppingCart, ArrowLeft, MessageCircle } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BottomNav from "@/components/BottomNav";
+import MobileDrawer from "@/components/MobileDrawer";
 import { useQuote } from "@/contexts/QuoteContext";
 import { useToast } from "@/hooks/use-toast";
 
 const QuotePage = () => {
   const { items, updateQuantity, removeItem, clearQuote, getTotal } = useQuote();
   const { toast } = useToast();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   
   const [formData, setFormData] = useState({
     name: "",
@@ -82,34 +85,34 @@ const QuotePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-[112px] lg:pt-[120px]">
+      <main className="pt-16 lg:pt-[120px] pb-24 lg:pb-0">
         {/* Header */}
         <div className="bg-secondary border-b border-border">
-          <div className="section-container py-8">
+          <div className="section-container py-6 lg:py-8">
             <Link
               to="/produtos"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-4"
+              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-3 min-h-[44px]"
             >
               <ArrowLeft size={16} />
               Continuar comprando
             </Link>
-            <h1 className="text-2xl lg:text-3xl font-heading font-bold text-foreground">
+            <h1 className="text-xl lg:text-3xl font-heading font-bold text-foreground">
               Meu Orçamento
             </h1>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-sm lg:text-base text-muted-foreground mt-1">
               {totalItems} {totalItems === 1 ? "item" : "itens"} selecionado{totalItems !== 1 ? "s" : ""}
             </p>
           </div>
         </div>
 
-        <div className="section-container py-8">
+        <div className="section-container py-6 lg:py-8">
           {items.length === 0 ? (
-            <div className="text-center py-16">
-              <ShoppingCart size={64} className="mx-auto text-muted-foreground/30 mb-4" />
-              <h2 className="text-xl font-heading font-bold text-foreground mb-2">
+            <div className="text-center py-12 lg:py-16">
+              <ShoppingCart size={56} className="mx-auto text-muted-foreground/30 mb-4" />
+              <h2 className="text-lg lg:text-xl font-heading font-bold text-foreground mb-2">
                 Seu orçamento está vazio
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-sm lg:text-base text-muted-foreground mb-6">
                 Adicione produtos ao orçamento para solicitar uma cotação.
               </p>
               <Link to="/produtos" className="btn-primary">
@@ -117,11 +120,11 @@ const QuotePage = () => {
               </Link>
             </div>
           ) : (
-            <div className="grid lg:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
               {/* Products List */}
               <div className="lg:col-span-2">
                 <div className="bg-card rounded-lg border border-border overflow-hidden">
-                  {/* Table Header */}
+                  {/* Table Header - Desktop */}
                   <div className="hidden md:grid md:grid-cols-12 gap-4 px-6 py-4 bg-secondary text-sm font-medium text-muted-foreground">
                     <div className="col-span-6">Produto</div>
                     <div className="col-span-3 text-center">Quantidade</div>
@@ -134,38 +137,35 @@ const QuotePage = () => {
                       <div key={item.product.id} className="p-4 md:p-6">
                         <div className="md:grid md:grid-cols-12 md:gap-4 md:items-center">
                           {/* Product Info */}
-                          <div className="flex gap-4 col-span-6 mb-4 md:mb-0">
-                            <div className="w-20 h-20 bg-secondary rounded-lg shrink-0">
+                          <div className="flex gap-3 lg:gap-4 col-span-6 mb-4 md:mb-0">
+                            <div className="w-16 h-16 lg:w-20 lg:h-20 bg-secondary rounded-lg shrink-0">
                               <img
                                 src={item.product.image}
                                 alt={item.product.name}
                                 className="w-full h-full object-contain p-2"
                               />
                             </div>
-                            <div>
-                              <span className="badge-sku text-xs">{item.product.sku}</span>
-                              <h3 className="font-medium text-foreground mt-1">
+                            <div className="flex-1 min-w-0">
+                              <span className="badge-sku text-[10px] lg:text-xs">{item.product.sku}</span>
+                              <h3 className="font-medium text-foreground mt-1 text-sm lg:text-base line-clamp-2">
                                 {item.product.name}
                               </h3>
-                              <p className="text-sm text-muted-foreground line-clamp-1">
-                                {item.product.shortDescription}
-                              </p>
                             </div>
                           </div>
 
                           {/* Quantity */}
-                          <div className="col-span-3 flex justify-center mb-4 md:mb-0">
+                          <div className="col-span-3 flex justify-start md:justify-center mb-4 md:mb-0">
                             <div className="flex items-center border border-border rounded-md">
                               <button
                                 onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                                className="p-2 hover:bg-secondary"
+                                className="p-3 hover:bg-secondary min-w-[44px] min-h-[44px] flex items-center justify-center"
                               >
                                 <Minus size={16} />
                               </button>
-                              <span className="px-4 font-medium">{item.quantity}</span>
+                              <span className="px-4 font-medium min-w-[40px] text-center">{item.quantity}</span>
                               <button
                                 onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                                className="p-2 hover:bg-secondary"
+                                className="p-3 hover:bg-secondary min-w-[44px] min-h-[44px] flex items-center justify-center"
                               >
                                 <Plus size={16} />
                               </button>
@@ -173,13 +173,13 @@ const QuotePage = () => {
                           </div>
 
                           {/* Actions */}
-                          <div className="col-span-3 flex justify-end">
+                          <div className="col-span-3 flex justify-start md:justify-end">
                             <button
                               onClick={() => removeItem(item.product.id)}
-                              className="flex items-center gap-2 text-sm text-destructive hover:underline"
+                              className="flex items-center gap-2 text-sm text-destructive hover:underline min-h-[44px] px-2"
                             >
                               <Trash2 size={16} />
-                              <span className="hidden sm:inline">Remover</span>
+                              <span>Remover</span>
                             </button>
                           </div>
                         </div>
@@ -188,10 +188,10 @@ const QuotePage = () => {
                   </div>
 
                   {/* Footer */}
-                  <div className="px-6 py-4 bg-secondary flex justify-between items-center">
+                  <div className="px-4 lg:px-6 py-4 bg-secondary flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                     <button
                       onClick={clearQuote}
-                      className="text-sm text-destructive hover:underline"
+                      className="text-sm text-destructive hover:underline min-h-[44px] px-2"
                     >
                       Limpar lista
                     </button>
@@ -204,14 +204,14 @@ const QuotePage = () => {
 
               {/* Form */}
               <div className="lg:col-span-1">
-                <div className="bg-card rounded-lg border border-border p-6 sticky top-32">
-                  <h2 className="font-heading font-bold text-lg mb-6">
+                <div className="bg-card rounded-lg border border-border p-4 lg:p-6 lg:sticky lg:top-32">
+                  <h2 className="font-heading font-bold text-lg mb-4 lg:mb-6">
                     Solicitar Orçamento
                   </h2>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium mb-1">
+                      <label className="block text-sm font-medium mb-1.5">
                         Nome *
                       </label>
                       <input
@@ -220,12 +220,12 @@ const QuotePage = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-3 py-3 lg:py-2.5 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base lg:text-sm min-h-[48px] lg:min-h-0"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">
+                      <label className="block text-sm font-medium mb-1.5">
                         Empresa
                       </label>
                       <input
@@ -233,12 +233,12 @@ const QuotePage = () => {
                         name="company"
                         value={formData.company}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-3 py-3 lg:py-2.5 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base lg:text-sm min-h-[48px] lg:min-h-0"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">
+                      <label className="block text-sm font-medium mb-1.5">
                         CNPJ
                       </label>
                       <input
@@ -247,12 +247,12 @@ const QuotePage = () => {
                         value={formData.cnpj}
                         onChange={handleInputChange}
                         placeholder="00.000.000/0000-00"
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-3 py-3 lg:py-2.5 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base lg:text-sm min-h-[48px] lg:min-h-0"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">
+                      <label className="block text-sm font-medium mb-1.5">
                         E-mail *
                       </label>
                       <input
@@ -261,12 +261,12 @@ const QuotePage = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-3 py-3 lg:py-2.5 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base lg:text-sm min-h-[48px] lg:min-h-0"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">
+                      <label className="block text-sm font-medium mb-1.5">
                         Telefone/WhatsApp *
                       </label>
                       <input
@@ -276,12 +276,12 @@ const QuotePage = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="(11) 99999-9999"
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-3 py-3 lg:py-2.5 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-base lg:text-sm min-h-[48px] lg:min-h-0"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">
+                      <label className="block text-sm font-medium mb-1.5">
                         Observações
                       </label>
                       <textarea
@@ -290,7 +290,7 @@ const QuotePage = () => {
                         onChange={handleInputChange}
                         rows={3}
                         placeholder="Informe detalhes adicionais..."
-                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                        className="w-full px-3 py-3 lg:py-2.5 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary resize-none text-base lg:text-sm"
                       />
                     </div>
 
@@ -303,7 +303,7 @@ const QuotePage = () => {
                     </button>
 
                     <p className="text-xs text-muted-foreground text-center">
-                      Ao clicar, você será redirecionado para o WhatsApp com os detalhes do orçamento.
+                      Ao clicar, você será redirecionado para o WhatsApp.
                     </p>
                   </form>
                 </div>
@@ -312,7 +312,17 @@ const QuotePage = () => {
           )}
         </div>
       </main>
-      <Footer />
+      
+      {/* Desktop Footer */}
+      <div className="hidden lg:block">
+        <Footer />
+      </div>
+
+      {/* Mobile Drawer */}
+      <MobileDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+
+      {/* Mobile Bottom Nav */}
+      <BottomNav onMenuClick={() => setIsDrawerOpen(true)} />
     </div>
   );
 };

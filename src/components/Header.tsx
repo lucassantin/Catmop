@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Search, ShoppingCart, ChevronDown, Phone } from "lucide-react";
+import { Search, ShoppingCart, ChevronDown, Phone } from "lucide-react";
 import { categories } from "@/data/products";
 import { useQuote } from "@/contexts/QuoteContext";
 import logoImg from "@/assets/logo.jpg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -24,8 +23,8 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    setIsMobileMenuOpen(false);
     setIsProductsOpen(false);
+    setIsSearchOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -60,11 +59,11 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-card/98 backdrop-blur-md shadow-card py-2"
+          ? "bg-card shadow-card py-2"
           : "bg-card py-3"
       }`}
     >
-      {/* Top Bar */}
+      {/* Top Bar - Desktop only */}
       <div className="bg-primary text-primary-foreground text-sm py-2 hidden lg:block">
         <div className="section-container flex items-center justify-between">
           <div className="flex items-center gap-6">
@@ -175,8 +174,17 @@ const Header = () => {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            {/* Search */}
-            <div ref={searchRef} className="relative hidden md:block">
+            {/* Mobile Search Button */}
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="lg:hidden p-2 rounded-md text-muted-foreground hover:text-primary min-h-[44px] min-w-[44px] flex items-center justify-center"
+              aria-label="Buscar"
+            >
+              <Search size={22} />
+            </button>
+
+            {/* Desktop Search */}
+            <div ref={searchRef} className="relative hidden lg:block">
               {isSearchOpen ? (
                 <form onSubmit={handleSearch} className="animate-fade-in">
                   <input
@@ -199,105 +207,38 @@ const Header = () => {
               )}
             </div>
 
-            {/* Quote Cart */}
+            {/* Quote Cart - Desktop only */}
             <Link
               to="/orcamento"
-              className="relative flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-md font-medium text-sm hover:opacity-90 transition-opacity"
+              className="relative hidden lg:flex items-center gap-2 px-4 py-2 bg-accent text-accent-foreground rounded-md font-medium text-sm hover:opacity-90 transition-opacity"
             >
               <ShoppingCart size={18} />
-              <span className="hidden sm:inline">Meu Orçamento</span>
+              <span>Meu Orçamento</span>
               {itemCount > 0 && (
                 <span className="absolute -top-2 -right-2 w-5 h-5 bg-destructive text-destructive-foreground text-xs font-bold rounded-full flex items-center justify-center">
                   {itemCount}
                 </span>
               )}
             </Link>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 pb-4 animate-slide-down border-t border-border pt-4">
-            {/* Mobile Search */}
-            <form onSubmit={handleSearch} className="mb-4">
+        {/* Mobile Search Bar */}
+        {isSearchOpen && (
+          <div className="lg:hidden px-4 pb-3 animate-slide-down">
+            <form onSubmit={handleSearch}>
               <input
                 type="text"
                 placeholder="Buscar produtos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="input-search w-full"
+                autoFocus
               />
             </form>
-
-            <nav className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <div key={link.href}>
-                  {link.hasDropdown ? (
-                    <>
-                      <button
-                        onClick={() => setIsProductsOpen(!isProductsOpen)}
-                        className="flex items-center justify-between w-full px-4 py-3 text-foreground font-medium rounded-md hover:bg-secondary"
-                      >
-                        {link.label}
-                        <ChevronDown
-                          size={16}
-                          className={`transition-transform ${isProductsOpen ? "rotate-180" : ""}`}
-                        />
-                      </button>
-                      {isProductsOpen && (
-                        <div className="ml-4 mt-1 space-y-1 animate-slide-down">
-                          {categories.map((category) => (
-                            <Link
-                              key={category.id}
-                              to={`/produtos?categoria=${category.slug}`}
-                              className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary"
-                              onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                              {category.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <Link
-                      to={link.href}
-                      className={`block px-4 py-3 font-medium rounded-md ${
-                        location.pathname === link.href
-                          ? "text-primary bg-primary/5"
-                          : "text-foreground hover:bg-secondary"
-                      }`}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
-            </nav>
-
-            <div className="mt-4 pt-4 border-t border-border">
-              <a
-                href="https://wa.link/vqt47a"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 text-muted-foreground"
-              >
-                <Phone size={16} />
-                <span>(11) 9 4762-1792</span>
-              </a>
-            </div>
           </div>
         )}
+
       </div>
     </header>
   );
