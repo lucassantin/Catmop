@@ -63,27 +63,7 @@ const Header = () => {
           : "bg-card py-3"
       }`}
     >
-      {/* Top Bar - Desktop only */}
-      <div className="bg-primary text-primary-foreground text-sm py-2 hidden lg:block">
-        <div className="section-container flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <a 
-              href="https://wa.link/vqt47a"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-            >
-              <Phone size={14} />
-              <span>(11) 9 4762-1792</span>
-            </a>
-            <span className="text-primary-foreground/60">|</span>
-            <span>contato@catmop.com.br</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link to="/contato" className="hover:underline">Seja um Distribuidor</Link>
-          </div>
-        </div>
-      </div>
+      
 
       <div className="section-container">
         <div className="flex items-center justify-between gap-4">
