@@ -4,6 +4,8 @@ import { ShoppingCart, Check, ChevronRight, ArrowLeft, ZoomIn } from "lucide-rea
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
+import BottomNav from "@/components/BottomNav";
+import MobileDrawer from "@/components/MobileDrawer";
 import { getProductById, products } from "@/data/products";
 import { useQuote } from "@/contexts/QuoteContext";
 
@@ -14,20 +16,22 @@ const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<"description" | "specs" | "usage">("description");
   const [isZoomed, setIsZoomed] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   if (!product) {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <main className="pt-[112px] lg:pt-[120px]">
+        <main className="pt-16 lg:pt-[120px] pb-20 lg:pb-0">
           <div className="section-container py-16 text-center">
-            <h1 className="text-2xl font-heading font-bold mb-4">Produto não encontrado</h1>
+            <h1 className="text-xl lg:text-2xl font-heading font-bold mb-4">Produto não encontrado</h1>
             <Link to="/produtos" className="btn-primary">
               Ver Todos os Produtos
             </Link>
           </div>
         </main>
-        <Footer />
+        <BottomNav onMenuClick={() => setIsDrawerOpen(true)} />
+        <MobileDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
       </div>
     );
   }
@@ -44,19 +48,19 @@ const ProductDetailPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-[112px] lg:pt-[120px]">
+      <main className="pt-16 lg:pt-[120px] pb-36 lg:pb-0">
         {/* Breadcrumb */}
         <div className="bg-secondary border-b border-border">
-          <div className="section-container py-4">
-            <nav className="flex items-center gap-2 text-sm">
-              <Link to="/" className="text-muted-foreground hover:text-primary">
+          <div className="section-container py-3 lg:py-4">
+            <nav className="flex items-center gap-2 text-xs lg:text-sm overflow-x-auto">
+              <Link to="/" className="text-muted-foreground hover:text-primary whitespace-nowrap">
                 Home
               </Link>
-              <ChevronRight size={14} className="text-muted-foreground" />
-              <Link to="/produtos" className="text-muted-foreground hover:text-primary">
+              <ChevronRight size={12} className="text-muted-foreground shrink-0" />
+              <Link to="/produtos" className="text-muted-foreground hover:text-primary whitespace-nowrap">
                 Produtos
               </Link>
-              <ChevronRight size={14} className="text-muted-foreground" />
+              <ChevronRight size={12} className="text-muted-foreground shrink-0" />
               <span className="text-foreground font-medium line-clamp-1">
                 {product.name}
               </span>
@@ -64,18 +68,18 @@ const ProductDetailPage = () => {
           </div>
         </div>
 
-        <div className="section-container py-8">
+        <div className="section-container py-4 lg:py-8">
           {/* Back Button */}
           <Link
             to="/produtos"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-4 lg:mb-6 min-h-[44px]"
           >
             <ArrowLeft size={16} />
             Voltar para produtos
           </Link>
 
           {/* Product Main */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 mb-10 lg:mb-16">
             {/* Image */}
             <div className="relative">
               <div 
@@ -85,9 +89,9 @@ const ProductDetailPage = () => {
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-contain p-8"
+                  className="w-full h-full object-contain p-4 lg:p-8"
                 />
-                <button className="absolute bottom-4 right-4 p-2 bg-card rounded-lg shadow-sm">
+                <button className="absolute bottom-3 right-3 lg:bottom-4 lg:right-4 p-2 bg-card rounded-lg shadow-sm min-w-[44px] min-h-[44px] flex items-center justify-center">
                   <ZoomIn size={20} className="text-muted-foreground" />
                 </button>
               </div>
@@ -95,8 +99,8 @@ const ProductDetailPage = () => {
 
             {/* Info */}
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="badge-sku text-sm">{product.sku}</span>
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className="badge-sku text-xs lg:text-sm">{product.sku}</span>
                 {product.new && (
                   <span className="px-2 py-0.5 bg-accent/10 text-accent text-xs font-medium rounded">
                     Novo
@@ -107,40 +111,40 @@ const ProductDetailPage = () => {
                 </span>
               </div>
 
-              <h1 className="text-2xl lg:text-3xl font-heading font-bold text-foreground mb-4">
+              <h1 className="text-xl lg:text-3xl font-heading font-bold text-foreground mb-3 lg:mb-4">
                 {product.name}
               </h1>
 
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-sm lg:text-base text-muted-foreground mb-4 lg:mb-6 leading-relaxed">
                 {product.description}
               </p>
 
               {/* Specs Preview */}
-              <div className="grid grid-cols-2 gap-4 p-4 bg-secondary rounded-lg mb-6">
+              <div className="grid grid-cols-2 gap-3 lg:gap-4 p-3 lg:p-4 bg-secondary rounded-lg mb-4 lg:mb-6">
                 <div>
-                  <span className="text-xs text-muted-foreground uppercase">Material</span>
-                  <p className="text-sm font-medium">{product.specs.material}</p>
+                  <span className="text-[10px] lg:text-xs text-muted-foreground uppercase">Material</span>
+                  <p className="text-xs lg:text-sm font-medium">{product.specs.material}</p>
                 </div>
                 <div>
-                  <span className="text-xs text-muted-foreground uppercase">Dimensões</span>
-                  <p className="text-sm font-medium">{product.specs.dimensions}</p>
+                  <span className="text-[10px] lg:text-xs text-muted-foreground uppercase">Dimensões</span>
+                  <p className="text-xs lg:text-sm font-medium">{product.specs.dimensions}</p>
                 </div>
                 <div>
-                  <span className="text-xs text-muted-foreground uppercase">Peso</span>
-                  <p className="text-sm font-medium">{product.specs.weight}</p>
+                  <span className="text-[10px] lg:text-xs text-muted-foreground uppercase">Peso</span>
+                  <p className="text-xs lg:text-sm font-medium">{product.specs.weight}</p>
                 </div>
                 <div>
-                  <span className="text-xs text-muted-foreground uppercase">Cores</span>
-                  <p className="text-sm font-medium">{product.specs.colors.join(", ")}</p>
+                  <span className="text-[10px] lg:text-xs text-muted-foreground uppercase">Cores</span>
+                  <p className="text-xs lg:text-sm font-medium">{product.specs.colors.join(", ")}</p>
                 </div>
               </div>
 
-              {/* Quantity & Add to Quote */}
-              <div className="flex items-center gap-4 mb-6">
+              {/* Quantity & Add to Quote - Desktop */}
+              <div className="hidden lg:flex items-center gap-4 mb-6">
                 <div className="flex items-center border border-border rounded-md">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-4 py-2 text-lg font-medium hover:bg-secondary"
+                    className="px-4 py-2 text-lg font-medium hover:bg-secondary min-w-[44px] min-h-[44px]"
                   >
                     −
                   </button>
@@ -153,7 +157,7 @@ const ProductDetailPage = () => {
                   />
                   <button
                     onClick={() => setQuantity(quantity + 1)}
-                    className="px-4 py-2 text-lg font-medium hover:bg-secondary"
+                    className="px-4 py-2 text-lg font-medium hover:bg-secondary min-w-[44px] min-h-[44px]"
                   >
                     +
                   </button>
@@ -184,12 +188,12 @@ const ProductDetailPage = () => {
 
               {/* Applications */}
               <div>
-                <span className="text-xs text-muted-foreground uppercase">Aplicações</span>
+                <span className="text-[10px] lg:text-xs text-muted-foreground uppercase">Aplicações</span>
                 <div className="flex flex-wrap gap-2 mt-2">
                   {product.applications.map((app) => (
                     <span
                       key={app}
-                      className="px-3 py-1 bg-secondary text-sm rounded-full capitalize"
+                      className="px-2 lg:px-3 py-1 bg-secondary text-xs lg:text-sm rounded-full capitalize"
                     >
                       {app.replace("-", " ")}
                     </span>
@@ -200,8 +204,8 @@ const ProductDetailPage = () => {
           </div>
 
           {/* Tabs */}
-          <div className="border-b border-border mb-8">
-            <div className="flex gap-8">
+          <div className="border-b border-border mb-6 lg:mb-8 overflow-x-auto">
+            <div className="flex gap-4 lg:gap-8 min-w-max">
               {[
                 { id: "description", label: "Descrição" },
                 { id: "specs", label: "Ficha Técnica" },
@@ -210,7 +214,7 @@ const ProductDetailPage = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                  className={`pb-4 text-sm font-medium border-b-2 transition-colors ${
+                  className={`pb-3 lg:pb-4 text-sm font-medium border-b-2 transition-colors whitespace-nowrap min-h-[44px] ${
                     activeTab === tab.id
                       ? "border-primary text-primary"
                       : "border-transparent text-muted-foreground hover:text-foreground"
@@ -222,47 +226,42 @@ const ProductDetailPage = () => {
             </div>
           </div>
 
-          <div className="mb-16">
+          <div className="mb-10 lg:mb-16">
             {activeTab === "description" && (
               <div className="prose max-w-none">
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">
                   {product.description}
                 </p>
-                <p className="text-muted-foreground leading-relaxed mt-4">
+                <p className="text-sm lg:text-base text-muted-foreground leading-relaxed mt-4">
                   Este produto faz parte da linha {product.line} da Catmop, desenvolvido para 
                   atender às mais rigorosas exigências de higiene e eficiência em ambientes 
-                  profissionais. Fabricado com materiais de alta qualidade, oferece durabilidade 
-                  superior e excelente custo-benefício.
+                  profissionais.
                 </p>
               </div>
             )}
 
             {activeTab === "specs" && (
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
+                <div className="space-y-3 lg:space-y-4">
                   <div className="flex justify-between py-3 border-b border-border">
-                    <span className="text-muted-foreground">Material</span>
-                    <span className="font-medium">{product.specs.material}</span>
+                    <span className="text-sm text-muted-foreground">Material</span>
+                    <span className="text-sm font-medium">{product.specs.material}</span>
                   </div>
                   <div className="flex justify-between py-3 border-b border-border">
-                    <span className="text-muted-foreground">Dimensões</span>
-                    <span className="font-medium">{product.specs.dimensions}</span>
+                    <span className="text-sm text-muted-foreground">Dimensões</span>
+                    <span className="text-sm font-medium">{product.specs.dimensions}</span>
                   </div>
                   <div className="flex justify-between py-3 border-b border-border">
-                    <span className="text-muted-foreground">Peso</span>
-                    <span className="font-medium">{product.specs.weight}</span>
+                    <span className="text-sm text-muted-foreground">Peso</span>
+                    <span className="text-sm font-medium">{product.specs.weight}</span>
                   </div>
                   <div className="flex justify-between py-3 border-b border-border">
-                    <span className="text-muted-foreground">Cores Disponíveis</span>
-                    <span className="font-medium">{product.specs.colors.join(", ")}</span>
+                    <span className="text-sm text-muted-foreground">Cores</span>
+                    <span className="text-sm font-medium">{product.specs.colors.join(", ")}</span>
                   </div>
                   <div className="flex justify-between py-3 border-b border-border">
-                    <span className="text-muted-foreground">Código (SKU)</span>
-                    <span className="font-mono font-medium">{product.sku}</span>
-                  </div>
-                  <div className="flex justify-between py-3 border-b border-border">
-                    <span className="text-muted-foreground">Linha</span>
-                    <span className="font-medium capitalize">{product.line}</span>
+                    <span className="text-sm text-muted-foreground">SKU</span>
+                    <span className="text-sm font-mono font-medium">{product.sku}</span>
                   </div>
                 </div>
               </div>
@@ -270,15 +269,14 @@ const ProductDetailPage = () => {
 
             {activeTab === "usage" && (
               <div className="prose max-w-none">
-                <p className="text-muted-foreground leading-relaxed">
-                  Para melhor aproveitamento do produto, siga as seguintes recomendações:
+                <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">
+                  Para melhor aproveitamento do produto, siga as recomendações:
                 </p>
-                <ul className="list-disc list-inside text-muted-foreground space-y-2 mt-4">
-                  <li>Verifique se todos os componentes estão corretamente montados antes do uso.</li>
-                  <li>Para limpeza de superfícies, utilize movimentos em "S" para maior eficiência.</li>
-                  <li>Após o uso, lave bem o refil com água corrente e deixe secar ao ar livre.</li>
+                <ul className="list-disc list-inside text-sm lg:text-base text-muted-foreground space-y-2 mt-4">
+                  <li>Verifique se todos os componentes estão corretamente montados.</li>
+                  <li>Para limpeza, utilize movimentos em "S" para maior eficiência.</li>
+                  <li>Após o uso, lave bem o refil com água corrente.</li>
                   <li>Armazene em local seco e arejado.</li>
-                  <li>Substitua o refil quando apresentar sinais de desgaste.</li>
                 </ul>
               </div>
             )}
@@ -287,8 +285,8 @@ const ProductDetailPage = () => {
           {/* Related Products */}
           {relatedProducts.length > 0 && (
             <div>
-              <h2 className="section-title mb-8">Produtos Relacionados</h2>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+              <h2 className="section-title mb-4 lg:mb-8">Produtos Relacionados</h2>
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
                 {relatedProducts.map((relProduct) => (
                   relProduct && <ProductCard key={relProduct.id} product={relProduct} />
                 ))}
@@ -298,34 +296,51 @@ const ProductDetailPage = () => {
         </div>
 
         {/* Floating Add to Quote - Mobile */}
-        <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border p-4 lg:hidden z-40">
-          <button
-            onClick={handleAddToQuote}
-            disabled={inQuote}
-            className={`w-full flex items-center justify-center gap-2 py-3 rounded-md font-semibold ${
-              inQuote
-                ? "bg-accent/10 text-accent"
-                : "bg-primary text-primary-foreground"
-            }`}
-          >
-            {inQuote ? (
-              <>
-                <Check size={20} />
-                No Orçamento
-              </>
-            ) : (
-              <>
-                <ShoppingCart size={20} />
-                Adicionar ao Orçamento
-              </>
-            )}
-          </button>
+        <div className="fixed bottom-[72px] left-0 right-0 bg-card border-t border-border p-3 lg:hidden z-40 safe-area-bottom">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center border border-border rounded-md">
+              <button
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className="px-3 py-2 text-lg font-medium hover:bg-secondary min-w-[44px] min-h-[44px]"
+              >
+                −
+              </button>
+              <span className="px-3 font-medium">{quantity}</span>
+              <button
+                onClick={() => setQuantity(quantity + 1)}
+                className="px-3 py-2 text-lg font-medium hover:bg-secondary min-w-[44px] min-h-[44px]"
+              >
+                +
+              </button>
+            </div>
+            <button
+              onClick={handleAddToQuote}
+              disabled={inQuote}
+              className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-md font-semibold min-h-[48px] ${
+                inQuote
+                  ? "bg-accent/10 text-accent"
+                  : "bg-primary text-primary-foreground active:scale-[0.98]"
+              }`}
+            >
+              {inQuote ? (
+                <>
+                  <Check size={18} />
+                  No Orçamento
+                </>
+              ) : (
+                <>
+                  <ShoppingCart size={18} />
+                  Adicionar
+                </>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Image Zoom Modal */}
         {isZoomed && (
           <div
-            className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-8 cursor-zoom-out"
+            className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-4 lg:p-8 cursor-zoom-out"
             onClick={() => setIsZoomed(false)}
           >
             <img
@@ -336,7 +351,17 @@ const ProductDetailPage = () => {
           </div>
         )}
       </main>
-      <Footer />
+      
+      {/* Desktop Footer */}
+      <div className="hidden lg:block">
+        <Footer />
+      </div>
+
+      {/* Mobile Drawer */}
+      <MobileDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
+
+      {/* Mobile Bottom Nav */}
+      <BottomNav onMenuClick={() => setIsDrawerOpen(true)} />
     </div>
   );
 };
