@@ -17,7 +17,7 @@ const values = [
   {
     icon: Clock,
     title: "Tradição",
-    description: "Mais de 20 anos de experiência no mercado de equipamentos de limpeza profissional.",
+    description: "Mais de 34 anos de experiência no mercado de equipamentos de limpeza profissional.",
   },
   {
     icon: Target,
@@ -32,12 +32,12 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2000", event: "Fundação da Catmop em São Paulo" },
+  { year: "1992", event: "Fundação da Catmop em São Paulo" },
   { year: "2005", event: "Expansão para todo o território nacional" },
   { year: "2010", event: "Lançamento da linha hospitalar" },
   { year: "2015", event: "Certificação ISO 9001" },
   { year: "2020", event: "Inauguração do novo centro de distribuição" },
-  { year: "2024", event: "+1000 clientes ativos em todo Brasil" },
+  { year: "2026", event: "+1000 clientes ativos em todo Brasil" },
 ];
 
 const CompanyPage = () => {
@@ -79,12 +79,12 @@ const CompanyPage = () => {
                 </h2>
                 <div className="space-y-3 lg:space-y-4 text-sm lg:text-base text-muted-foreground">
                   <p>
-                    Fundada em 2000, a Catmop nasceu da visão de oferecer ao mercado brasileiro 
+                    Fundada em 1992, a Catmop nasceu da visão de oferecer ao mercado brasileiro 
                     equipamentos de limpeza profissional com qualidade internacional e preços 
                     competitivos.
                   </p>
                   <p>
-                    Ao longo de mais de duas décadas, construímos uma sólida reputação baseada 
+                    Ao longo de mais de três décadas, construímos uma sólida reputação baseada 
                     em produtos duráveis, atendimento personalizado e comprometimento com a 
                     satisfação de nossos clientes.
                   </p>
@@ -97,7 +97,7 @@ const CompanyPage = () => {
 
               <div className="grid grid-cols-2 gap-3 lg:gap-6">
                 <div className="bg-primary text-primary-foreground p-4 lg:p-6 rounded-xl text-center">
-                  <span className="text-2xl lg:text-4xl font-heading font-bold">+20</span>
+                  <span className="text-2xl lg:text-4xl font-heading font-bold">+34</span>
                   <p className="text-xs lg:text-sm text-primary-foreground/80 mt-1">Anos no mercado</p>
                 </div>
                 <div className="bg-secondary p-4 lg:p-6 rounded-xl text-center">

@@ -116,7 +116,7 @@ const ContactPage = () => {
                     <MapPin size={20} className="text-primary shrink-0 lg:w-6 lg:h-6" />
                     <div>
                       <h3 className="font-semibold text-sm lg:text-base">Endereço</h3>
-                      <p className="text-xs lg:text-sm text-muted-foreground">São Paulo - SP</p>
+                      <p className="text-xs lg:text-sm text-muted-foreground">Rua General Góis Monteiro, 103 - São Paulo</p>
                     </div>
                   </div>
 

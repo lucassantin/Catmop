@@ -84,11 +84,11 @@ const Footer = () => {
                   Segmentos
                 </Link>
               </li>
-              <li>
+              {/*<li>
                 <Link to="/materiais" className="text-background/70 hover:text-primary transition-colors text-sm">
                   Materiais de Apoio
                 </Link>
-              </li>
+              </li>*/}
               <li>
                 <Link to="/contato" className="text-background/70 hover:text-primary transition-colors text-sm">
                   Seja um Distribuidor
@@ -109,7 +109,7 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-primary shrink-0 mt-0.5" />
                 <span className="text-background/70 text-sm">
-                  São Paulo - SP<br />
+                  Rua General Góis Monteiro, 103 - São Paulo<br />
                   Brasil
                 </span>
               </li>

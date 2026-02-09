@@ -10,7 +10,7 @@ const slides = [
   {
     id: 1,
     image: heroHospitalar,
-    title: "Soluções Completas para Ambientes Hospitalares",
+    title: "Soluções Completas para Pisos Hospitalares",
     subtitle: "Equipamentos certificados para máxima higienização e controle de infecções",
     cta: { label: "Ver Linha Hospitalar", href: "/segmentos?seg=hospitalar" },
   },
@@ -128,13 +128,13 @@ const HeroSlider = () => {
                       </Link>
 
                       {/* Botão Secundário: Glassmorphism (Vidro) */}
-                      <Link
+                      {/*<Link
                         to="/materiais"
                         className="group flex items-center justify-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium rounded-full hover:bg-white/20 hover:border-white/40 transition-all duration-300"
                       >
                         <Download size={20} className="group-hover:translate-y-1 transition-transform" />
                         Baixar Catálogo
-                      </Link>
+                      </Link>*/}
                     </motion.div>
                   </motion.div>
                 </div>

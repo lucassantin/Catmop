@@ -16,7 +16,7 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
     { href: "/", label: "Início" },
     { href: "/empresa", label: "A Empresa" },
     { href: "/segmentos", label: "Segmentos" },
-    { href: "/materiais", label: "Materiais de Apoio" },
+    //{ href: "/materiais", label: "Materiais de Apoio" },
     { href: "/contato", label: "Contato" },
   ];
 

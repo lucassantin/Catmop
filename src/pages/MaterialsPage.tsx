@@ -69,7 +69,7 @@ const MaterialsPage = () => {
       <Header />
       <main className="pt-16 lg:pt-[120px] pb-20 lg:pb-0">
         {/* Header */}
-        <div className="bg-primary">
+        {/*<div className="bg-primary">
           <div className="section-container py-10 lg:py-16">
             <h1 className="text-2xl lg:text-4xl font-heading font-bold text-primary-foreground mb-2 lg:mb-4">
               Materiais de Apoio
@@ -79,7 +79,7 @@ const MaterialsPage = () => {
               conhecer melhor nossos produtos.
             </p>
           </div>
-        </div>
+        </div>*/}
 
         {/* Materials Grid */}
         <section className="py-8 lg:py-16">

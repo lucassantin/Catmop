@@ -63,7 +63,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <p className="font-medium text-card-foreground mb-1">Endereço</p>
-                    <p className="text-muted-foreground">São Paulo - SP, Brasil</p>
+                    <p className="text-muted-foreground">Rua General Góis Monteiro, 103 - São Paulo</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">

@@ -49,7 +49,7 @@ const Header = () => {
     { href: "/empresa", label: "A Empresa" },
     { href: "/produtos", label: "Produtos", hasDropdown: true },
     { href: "/segmentos", label: "Segmentos" },
-    { href: "/materiais", label: "Materiais de Apoio" },
+    //{ href: "/materiais", label: "Materiais de Apoio" },
     { href: "/contato", label: "Contato" },
   ];
 
