@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight, ArrowRight, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import heroHospitalar from "@/assets/banners/hero-hospitalar.jpg";
-import heroIndustrial from "@/assets/banners/hero-industrial.jpg";
+import heroHospitalar from "@/assets/banners/hero-hosp.png";
+import heroIndustrial from "@/assets/banners/hero-ind-mop.png";
 import heroCorporativo from "@/assets/banners/hero-corporativo.jpg";
 
 const slides = [

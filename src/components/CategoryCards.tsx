@@ -36,9 +36,7 @@ const CategoryCards = () => {
                 <h3 className="font-heading font-semibold text-foreground mb-1 text-sm lg:text-base">
                   {category.name}
                 </h3>
-                <p className="text-xs text-muted-foreground hidden lg:block">
-                  {category.subcategories.length} subcategorias
-                </p>
+
               </Link>
             );
           })}

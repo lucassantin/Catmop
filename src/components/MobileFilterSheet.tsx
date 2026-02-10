@@ -7,7 +7,6 @@ interface MobileFilterSheetProps {
   isOpen: boolean;
   onClose: () => void;
   categorySlug: string | null;
-  subSlug: string | null;
   lineFilter: string | null;
   localSearch: string;
   onSearchChange: (value: string) => void;
@@ -21,7 +20,6 @@ const MobileFilterSheet = ({
   isOpen,
   onClose,
   categorySlug,
-  subSlug,
   lineFilter,
   localSearch,
   onSearchChange,
@@ -32,8 +30,8 @@ const MobileFilterSheet = ({
 }: MobileFilterSheetProps) => {
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
-      <SheetContent 
-        side="bottom" 
+      <SheetContent
+        side="bottom"
         className="h-[85vh] rounded-t-2xl p-0 bg-card"
       >
         <SheetHeader className="p-4 border-b border-border sticky top-0 bg-card z-10">
@@ -84,11 +82,10 @@ const MobileFilterSheet = ({
                   key={category.id}
                   to={`/produtos?categoria=${category.slug}`}
                   onClick={onClose}
-                  className={`block px-4 py-3.5 rounded-lg text-base font-medium transition-colors min-h-[48px] ${
-                    categorySlug === category.slug
-                      ? "bg-primary/10 text-primary"
-                      : "text-foreground hover:bg-muted"
-                  }`}
+                  className={`block px-4 py-3.5 rounded-lg text-base font-medium transition-colors min-h-[48px] ${categorySlug === category.slug
+                    ? "bg-primary/10 text-primary"
+                    : "text-foreground hover:bg-muted"
+                    }`}
                 >
                   {category.name}
                 </Link>
@@ -107,18 +104,16 @@ const MobileFilterSheet = ({
                   onToggleLine("profissional");
                   onClose();
                 }}
-                className={`flex items-center gap-3 w-full px-4 py-3.5 rounded-lg text-base font-medium transition-colors min-h-[48px] ${
-                  lineFilter === "profissional"
-                    ? "bg-primary/10 text-primary"
-                    : "text-foreground hover:bg-muted"
-                }`}
+                className={`flex items-center gap-3 w-full px-4 py-3.5 rounded-lg text-base font-medium transition-colors min-h-[48px] ${lineFilter === "profissional"
+                  ? "bg-primary/10 text-primary"
+                  : "text-foreground hover:bg-muted"
+                  }`}
               >
                 <span
-                  className={`w-5 h-5 rounded-md border-2 flex items-center justify-center ${
-                    lineFilter === "profissional"
-                      ? "bg-primary border-primary"
-                      : "border-border"
-                  }`}
+                  className={`w-5 h-5 rounded-md border-2 flex items-center justify-center ${lineFilter === "profissional"
+                    ? "bg-primary border-primary"
+                    : "border-border"
+                    }`}
                 >
                   {lineFilter === "profissional" && (
                     <span className="w-2 h-2 bg-primary-foreground rounded-sm" />
@@ -131,18 +126,16 @@ const MobileFilterSheet = ({
                   onToggleLine("domestica");
                   onClose();
                 }}
-                className={`flex items-center gap-3 w-full px-4 py-3.5 rounded-lg text-base font-medium transition-colors min-h-[48px] ${
-                  lineFilter === "domestica"
-                    ? "bg-primary/10 text-primary"
-                    : "text-foreground hover:bg-muted"
-                }`}
+                className={`flex items-center gap-3 w-full px-4 py-3.5 rounded-lg text-base font-medium transition-colors min-h-[48px] ${lineFilter === "domestica"
+                  ? "bg-primary/10 text-primary"
+                  : "text-foreground hover:bg-muted"
+                  }`}
               >
                 <span
-                  className={`w-5 h-5 rounded-md border-2 flex items-center justify-center ${
-                    lineFilter === "domestica"
-                      ? "bg-primary border-primary"
-                      : "border-border"
-                  }`}
+                  className={`w-5 h-5 rounded-md border-2 flex items-center justify-center ${lineFilter === "domestica"
+                    ? "bg-primary border-primary"
+                    : "border-border"
+                    }`}
                 >
                   {lineFilter === "domestica" && (
                     <span className="w-2 h-2 bg-primary-foreground rounded-sm" />

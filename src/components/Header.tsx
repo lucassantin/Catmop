@@ -57,13 +57,12 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-card shadow-card py-2"
           : "bg-card py-3"
-      }`}
+        }`}
     >
-      
+
 
       <div className="section-container">
         <div className="flex items-center justify-between gap-4">
@@ -81,11 +80,10 @@ const Header = () => {
               <div key={link.href} className="relative group">
                 {link.hasDropdown ? (
                   <button
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                      location.pathname.startsWith("/produtos")
+                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${location.pathname.startsWith("/produtos")
                         ? "text-primary bg-primary/5"
                         : "text-foreground/80 hover:text-primary hover:bg-primary/5"
-                    }`}
+                      }`}
                     onMouseEnter={() => setIsProductsOpen(true)}
                     onMouseLeave={() => setIsProductsOpen(false)}
                   >
@@ -95,11 +93,10 @@ const Header = () => {
                 ) : (
                   <Link
                     to={link.href}
-                    className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                      location.pathname === link.href
+                    className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${location.pathname === link.href
                         ? "text-primary bg-primary/5"
                         : "text-foreground/80 hover:text-primary hover:bg-primary/5"
-                    }`}
+                      }`}
                   >
                     {link.label}
                   </Link>
@@ -108,9 +105,8 @@ const Header = () => {
                 {/* Mega Menu */}
                 {link.hasDropdown && (
                   <div
-                    className={`absolute top-full left-0 pt-2 ${
-                      isProductsOpen ? "opacity-100 visible" : "opacity-0 invisible"
-                    } transition-all duration-200`}
+                    className={`absolute top-full left-0 pt-2 ${isProductsOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                      } transition-all duration-200`}
                     onMouseEnter={() => setIsProductsOpen(true)}
                     onMouseLeave={() => setIsProductsOpen(false)}
                   >
@@ -123,18 +119,7 @@ const Header = () => {
                           >
                             {category.name}
                           </Link>
-                          <ul className="mt-2 space-y-1">
-                            {category.subcategories.map((sub) => (
-                              <li key={sub.id}>
-                                <Link
-                                  to={`/produtos?categoria=${category.slug}&sub=${sub.slug}`}
-                                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                                >
-                                  {sub.name}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
+
                         </div>
                       ))}
                       <div className="col-span-2 pt-4 border-t border-border">

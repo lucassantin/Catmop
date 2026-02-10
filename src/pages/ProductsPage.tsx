@@ -14,9 +14,8 @@ const ProductsPage = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  
+
   const categorySlug = searchParams.get("categoria");
-  const subSlug = searchParams.get("sub");
   const searchQuery = searchParams.get("busca") || "";
   const lineFilter = searchParams.get("linha");
 
@@ -33,16 +32,12 @@ const ProductsPage = () => {
       result = result.filter((p) => p.category === categorySlug);
     }
 
-    if (subSlug) {
-      result = result.filter((p) => p.subcategory === subSlug);
-    }
-
     if (lineFilter) {
       result = result.filter((p) => p.line === lineFilter);
     }
 
     return result;
-  }, [categorySlug, subSlug, searchQuery, lineFilter]);
+  }, [categorySlug, searchQuery, lineFilter]);
 
   const currentCategory = categories.find((c) => c.slug === categorySlug);
 
@@ -72,7 +67,7 @@ const ProductsPage = () => {
     setSearchParams(newParams);
   };
 
-  const hasActiveFilters = !!(categorySlug || subSlug || searchQuery || lineFilter);
+  const hasActiveFilters = !!(categorySlug || searchQuery || lineFilter);
 
   return (
     <div className="min-h-screen bg-background">
@@ -139,30 +134,15 @@ const ProductsPage = () => {
                       <li key={category.id}>
                         <Link
                           to={`/produtos?categoria=${category.slug}`}
-                          className={`block py-1.5 text-sm transition-colors ${
-                            categorySlug === category.slug
-                              ? "text-primary font-medium"
-                              : "text-foreground hover:text-primary"
-                          }`}
+                          className={`block py-1.5 text-sm transition-colors ${categorySlug === category.slug
+                            ? "text-primary font-medium"
+                            : "text-foreground hover:text-primary"
+                            }`}
                         >
                           {category.name}
                         </Link>
                         {categorySlug === category.slug && (
                           <ul className="ml-4 mt-1 space-y-1">
-                            {category.subcategories.map((sub) => (
-                              <li key={sub.id}>
-                                <Link
-                                  to={`/produtos?categoria=${category.slug}&sub=${sub.slug}`}
-                                  className={`block py-1 text-sm transition-colors ${
-                                    subSlug === sub.slug
-                                      ? "text-primary font-medium"
-                                      : "text-muted-foreground hover:text-primary"
-                                  }`}
-                                >
-                                  {sub.name}
-                                </Link>
-                              </li>
-                            ))}
                           </ul>
                         )}
                       </li>
@@ -178,35 +158,31 @@ const ProductsPage = () => {
                   <div className="space-y-2">
                     <button
                       onClick={() => toggleLine("profissional")}
-                      className={`flex items-center gap-2 w-full py-1.5 text-sm transition-colors ${
-                        lineFilter === "profissional"
-                          ? "text-primary font-medium"
-                          : "text-foreground hover:text-primary"
-                      }`}
+                      className={`flex items-center gap-2 w-full py-1.5 text-sm transition-colors ${lineFilter === "profissional"
+                        ? "text-primary font-medium"
+                        : "text-foreground hover:text-primary"
+                        }`}
                     >
                       <span
-                        className={`w-4 h-4 rounded border ${
-                          lineFilter === "profissional"
-                            ? "bg-primary border-primary"
-                            : "border-border"
-                        }`}
+                        className={`w-4 h-4 rounded border ${lineFilter === "profissional"
+                          ? "bg-primary border-primary"
+                          : "border-border"
+                          }`}
                       />
                       Profissional
                     </button>
                     <button
                       onClick={() => toggleLine("domestica")}
-                      className={`flex items-center gap-2 w-full py-1.5 text-sm transition-colors ${
-                        lineFilter === "domestica"
-                          ? "text-primary font-medium"
-                          : "text-foreground hover:text-primary"
-                      }`}
+                      className={`flex items-center gap-2 w-full py-1.5 text-sm transition-colors ${lineFilter === "domestica"
+                        ? "text-primary font-medium"
+                        : "text-foreground hover:text-primary"
+                        }`}
                     >
                       <span
-                        className={`w-4 h-4 rounded border ${
-                          lineFilter === "domestica"
-                            ? "bg-primary border-primary"
-                            : "border-border"
-                        }`}
+                        className={`w-4 h-4 rounded border ${lineFilter === "domestica"
+                          ? "bg-primary border-primary"
+                          : "border-border"
+                          }`}
                       />
                       Doméstica
                     </button>
@@ -233,17 +209,15 @@ const ProductsPage = () => {
                 <div className="flex items-center border border-border rounded-lg overflow-hidden">
                   <button
                     onClick={() => setViewMode("grid")}
-                    className={`p-3 min-w-[44px] min-h-[44px] flex items-center justify-center ${
-                      viewMode === "grid" ? "bg-primary text-primary-foreground" : "text-muted-foreground bg-card"
-                    }`}
+                    className={`p-3 min-w-[44px] min-h-[44px] flex items-center justify-center ${viewMode === "grid" ? "bg-primary text-primary-foreground" : "text-muted-foreground bg-card"
+                      }`}
                   >
                     <Grid size={18} />
                   </button>
                   <button
                     onClick={() => setViewMode("list")}
-                    className={`p-3 min-w-[44px] min-h-[44px] flex items-center justify-center ${
-                      viewMode === "list" ? "bg-primary text-primary-foreground" : "text-muted-foreground bg-card"
-                    }`}
+                    className={`p-3 min-w-[44px] min-h-[44px] flex items-center justify-center ${viewMode === "list" ? "bg-primary text-primary-foreground" : "text-muted-foreground bg-card"
+                      }`}
                   >
                     <List size={18} />
                   </button>
@@ -284,8 +258,8 @@ const ProductsPage = () => {
                   {searchQuery && (
                     <span className="flex items-center gap-1 px-3 py-1.5 bg-primary/10 text-primary rounded-full text-sm">
                       "{searchQuery}"
-                      <button 
-                        onClick={() => { 
+                      <button
+                        onClick={() => {
                           const newParams = new URLSearchParams(searchParams);
                           newParams.delete("busca");
                           setSearchParams(newParams);
@@ -300,11 +274,10 @@ const ProductsPage = () => {
                   {currentCategory && (
                     <span className="flex items-center gap-1 px-3 py-1.5 bg-primary/10 text-primary rounded-full text-sm">
                       {currentCategory.name}
-                      <button 
+                      <button
                         onClick={() => {
                           const newParams = new URLSearchParams(searchParams);
                           newParams.delete("categoria");
-                          newParams.delete("sub");
                           setSearchParams(newParams);
                         }}
                         className="ml-1 p-0.5 hover:bg-primary/20 rounded-full"
@@ -316,7 +289,7 @@ const ProductsPage = () => {
                   {lineFilter && (
                     <span className="flex items-center gap-1 px-3 py-1.5 bg-primary/10 text-primary rounded-full text-sm">
                       {lineFilter === "profissional" ? "Profissional" : "Doméstica"}
-                      <button 
+                      <button
                         onClick={() => toggleLine(lineFilter)}
                         className="ml-1 p-0.5 hover:bg-primary/20 rounded-full"
                       >
@@ -328,8 +301,8 @@ const ProductsPage = () => {
               )}
 
               {filteredProducts.length > 0 ? (
-                <div className={viewMode === "grid" 
-                  ? "grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6" 
+                <div className={viewMode === "grid"
+                  ? "grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6"
                   : "space-y-3 lg:space-y-4"
                 }>
                   {filteredProducts.map((product) => (
@@ -353,7 +326,7 @@ const ProductsPage = () => {
           </div>
         </div>
       </main>
-      
+
       {/* Desktop Footer */}
       <div className="hidden lg:block">
         <Footer />
@@ -364,7 +337,6 @@ const ProductsPage = () => {
         isOpen={isFilterOpen}
         onClose={() => setIsFilterOpen(false)}
         categorySlug={categorySlug}
-        subSlug={subSlug}
         lineFilter={lineFilter}
         localSearch={localSearch}
         onSearchChange={setLocalSearch}
