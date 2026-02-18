@@ -18,7 +18,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-background/70 text-sm leading-relaxed mb-6">
-              Há mais de 20 anos desenvolvendo soluções em equipamentos de limpeza 
+              Há mais de 34 anos desenvolvendo soluções em equipamentos de limpeza 
               profissional para os mais diversos segmentos do mercado.
             </p>
             <div className="flex gap-3">
@@ -130,7 +130,7 @@ const Footer = () => {
                   className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors text-sm"
                 >
                   <Mail size={18} className="text-primary shrink-0" />
-                  contato@catmop.com.br
+                  catmop@catmop.com.br
                 </a>
               </li>
             </ul>

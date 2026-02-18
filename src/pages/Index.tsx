@@ -9,6 +9,7 @@ import TrustBadges from "@/components/TrustBadges";
 import CTASection from "@/components/CTASection";
 import BottomNav from "@/components/BottomNav";
 import MobileDrawer from "@/components/MobileDrawer";
+import FeaturedBanners from "@/components/FeaturedProducts";
 
 const Index = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -20,9 +21,8 @@ const Index = () => {
         <HeroSlider />
         <TrustBadges />
         <CategoryCards />
-        <FeaturedProducts title="Produtos em Destaque" />
         <SegmentsPreview />
-        <FeaturedProducts title="Lançamentos" showNew />
+        <FeaturedBanners title="Banners" />
         <CTASection />
       </main>
       

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Hospital, Factory, Building, BedDouble } from "lucide-react";
 import { segments } from "@/data/products";
-import heroHospitalar from "@/assets/banners/hero-hospitalar.jpg";
-import heroIndustrial from "@/assets/banners/hero-industrial.jpg";
+import heroHospitalar from "@/assets/banners/hero-hosp.png";
+import heroIndustrial from "@/assets/banners/hero-ind-mop.png";
 import heroCorporativo from "@/assets/banners/hero-corporativo.jpg";
 
 const iconMap: Record<string, React.ElementType> = {

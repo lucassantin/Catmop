@@ -16,9 +16,6 @@ const CategoryCards = () => {
       <div className="section-container">
         <div className="text-center mb-12">
           <h2 className="section-title mb-3">Navegue por Categoria</h2>
-          <p className="section-subtitle">
-            Encontre rapidamente os equipamentos ideais para sua operação
-          </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">

@@ -209,7 +209,6 @@ const ProductDetailPage = () => {
               {[
                 { id: "description", label: "Descrição" },
                 { id: "specs", label: "Ficha Técnica" },
-                { id: "usage", label: "Modo de Uso" },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -267,19 +266,7 @@ const ProductDetailPage = () => {
               </div>
             )}
 
-            {activeTab === "usage" && (
-              <div className="prose max-w-none">
-                <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">
-                  Para melhor aproveitamento do produto, siga as recomendações:
-                </p>
-                <ul className="list-disc list-inside text-sm lg:text-base text-muted-foreground space-y-2 mt-4">
-                  <li>Verifique se todos os componentes estão corretamente montados.</li>
-                  <li>Para limpeza, utilize movimentos em "S" para maior eficiência.</li>
-                  <li>Após o uso, lave bem o refil com água corrente.</li>
-                  <li>Armazene em local seco e arejado.</li>
-                </ul>
-              </div>
-            )}
+            
           </div>
 
           {/* Related Products */}

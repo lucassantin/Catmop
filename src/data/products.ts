@@ -2,7 +2,7 @@
 import mopProfissional60 from "@/assets/products/mop-profissional-60.jpg";
 import baldeEspremedor from "@/assets/products/balde-espremedor.jpg";
 import carroFuncional from "@/assets/products/carro-funcional.jpg";
-import placaSinalizadora from "@/assets/products/placa-sinalização-piso.jpg";
+import placaSinalizadora from "@/assets/products/placa-sinalização-piso.png";
 import refilMicrofibra from "@/assets/products/refil-microfibra.jpg";
 import paAutomatica from "@/assets/products/pa-automatica.jpg";
 import rodoVidros from "@/assets/products/rodo-vidros.jpg";
@@ -22,7 +22,7 @@ import refilMopMicrofibraFlat from "@/assets/products/refil-mop-microfibra.png";
 import rodoAluminio from "@/assets/products/rodo-aluminio.jpg";
 import suporteCabeleira from "@/assets/products/suporte-cabeleireira.jpg";
 import suporteMopPlano from "@/assets/products/suporte-mob-plano.jpg";
-import suporteMop from "@/assets/products/suporte-mop.jpg";
+import suporteMop from "@/assets/products/suporte-mop.png";
 import suporteMopParede from "@/assets/products/suporte-mop-parede.jpg";
 import sacolaLavagem from "@/assets/products/sacola-lavagem.jpg";
 import mopDescartavel from "@/assets/products/mop-descartavel.png";
@@ -166,24 +166,6 @@ export const products: Product[] = [
     relatedProducts: ["3", "4"],
   },
   {
-    id: "8",
-    sku: "ROD-VID-45",
-    name: "Rodo Limpa Vidros Profissional 45cm",
-    shortDescription: "Rodo com lâmina de borracha premium",
-    description: "Rodo profissional para vidros com lâmina de borracha natural e cabo telescópico de até 3 metros. Ideal para fachadas e grandes superfícies.",
-    image: rodoVidros,
-    category: "vidros",
-    line: "profissional",
-    applications: ["vidros", "fachadas", "vitrines"],
-    specs: {
-      material: "Alumínio e borracha natural",
-      dimensions: "45 x 5 cm + cabo 3m",
-      weight: "0.4 kg",
-      colors: ["Preto/Prata"],
-    },
-    relatedProducts: ["5"],
-  },
-  {
     id: "9",
     sku: "CAR-LAV-01",
     name: "Carro de Lavanderia",
@@ -199,7 +181,7 @@ export const products: Product[] = [
       weight: "8 kg",
       colors: ["Azul", "Bege"],
     },
-    relatedProducts: ["10", "22"],
+    relatedProducts: ["10"],
   },
   {
     id: "10",
@@ -253,7 +235,7 @@ export const products: Product[] = [
       weight: "0.35 kg",
       colors: ["Prata/Azul", "Prata/Vermelho"],
     },
-    relatedProducts: ["1", "2", "8"],
+    relatedProducts: [],
   },
   {
     id: "13",
@@ -421,17 +403,17 @@ export const products: Product[] = [
     id: "22",
     sku: "SAC-LAV-01",
     name: "Sacola de Lavagem",
-    shortDescription: "Saco para transporte de roupas",
-    description: "Sacola resistente para separação e transporte de roupas em ambientes hospitalares ou hoteleiros.",
+    shortDescription: "Saco para lavagem",
+    description: "Sacola resistente para lavagem de mops e outros itens têxteis.",
     image: sacolaLavagem,
     category: "acessorios",
     line: "profissional",
     applications: ["lavanderia"],
     specs: {
-      material: "Nylon/Poliéster",
-      dimensions: "100L",
+      material: "Poliéster",
+      dimensions: "60 cm X 80 cm",
       weight: "0.2 kg",
-      colors: ["Azul claro"],
+      colors: ["Branca"],
     },
     relatedProducts: ["9"],
   },
@@ -464,7 +446,7 @@ export const products: Product[] = [
     line: "profissional",
     applications: ["piso-frio", "madeira"],
     specs: {
-      material: "Poliéster microfibra/algodão",
+      material: "Misto algodão poliéster ou 100% poliéster microfibra",
       dimensions: "31cm / 45cm",
       weight: "Variável",
       colors: ["Natural"],
@@ -487,7 +469,7 @@ export const products: Product[] = [
       weight: "Variável",
       colors: ["Azul/Branco"],
     },
-    relatedProducts: ["18"],
+    relatedProducts: [],
   },
   {
     id: "26",
@@ -505,7 +487,7 @@ export const products: Product[] = [
       weight: "0.2 kg",
       colors: ["Branco"],
     },
-    relatedProducts: ["19", "12"],
+    relatedProducts: ["12"],
   },
   {
     id: "27",
@@ -523,7 +505,7 @@ export const products: Product[] = [
       weight: "Variável",
       colors: ["Azul/Branco"],
     },
-    relatedProducts: ["18"],
+    relatedProducts: ["28", "29", "30"],
   },
   {
     id: "28",
@@ -541,7 +523,7 @@ export const products: Product[] = [
       weight: "Variável",
       colors: ["Azul/Branco"],
     },
-    relatedProducts: ["18"],
+    relatedProducts: ["27","29", "30"],
   },
   {
     id: "29",
@@ -559,7 +541,7 @@ export const products: Product[] = [
       weight: "Variável",
       colors: ["Azul/Branco"],
     },
-    relatedProducts: ["18"],
+    relatedProducts: ["27", "28","30"],
   },
   {
     id: "30",
@@ -577,7 +559,7 @@ export const products: Product[] = [
       weight: "Variável",
       colors: ["Azul/Branco"],
     },
-    relatedProducts: ["18"],
+    relatedProducts: ["27", "28", "29"],
   },
 ];
 
