@@ -3,6 +3,9 @@ import mopProfissional60 from "@/assets/products/mop-profissional-60.jpg";
 import baldeEspremedor from "@/assets/products/balde-espremedor.jpg";
 import carroFuncional from "@/assets/products/carro-funcional.jpg";
 import placaSinalizadora from "@/assets/products/placa-sinalização-piso.png";
+import oxySpray from "@/assets/products/OXY-SPRAY.jpg";
+import desinfetanteSpray from "@/assets/products/OXY-SPRAY.jpg";
+
 import refilMicrofibra from "@/assets/products/refil-microfibra.jpg";
 import paAutomatica from "@/assets/products/pa-automatica.jpg";
 import rodoVidros from "@/assets/products/rodo-vidros.jpg";
@@ -492,9 +495,9 @@ export const products: Product[] = [
   {
     id: "27",
     sku: "REF-MOP-BLCK",
-    name: "Espuma Sabrina",
-    shortDescription: "Máxima performance em limpeza profissional",
-    description: "Equipamento com tecnologia de extração de espuma densa, ideal para higienização de colchões em hospitais e ambientes de saúde. Oferece alta resistência e eficiência em lavagens frequentes.",
+    name: "Sabrina-Foam",
+    shortDescription: "A Sabrina-Foam é uma máquina de extração de espuma densa com compressor interno.",
+    description: "A Sabrina-Foam é uma máquina de extração de espuma densa com compressor interno. A máquina pulveriza uma espuma especial e espessa na superfície para ser limpa, que após alguns segundos é sugada, recuperando a sujeira. O sistema especial de sucção de alto vácuo permite remover a máxima quantidade de sujeira do carpete e dos tecidos estofados e alcançar um tempo de secagem muito curto.",
     image: sabrina,
     category: "equipamentos",
     line: "profissional",
@@ -511,8 +514,8 @@ export const products: Product[] = [
     id: "28",
     sku: "REF-MOP-BLCK",
     name: "Foamtec30",
-    shortDescription: "Máxima performance em limpeza profissional",
-    description: "Equipamento com tecnologia de extração de espuma densa, ideal para higienização pesada. Oferece alta resistência e eficiência em lavagens frequentes.",
+    shortDescription: "Foamtec30 é o modelo de porte médio entre as máquinas que operam com o sistema Foamtec, patenteado pela Santoemma.",
+    description: "Foamtec30 é o modelo de porte médio entre as máquinas que operam com o sistema Foamtec, patenteado pela Santoemma. Ele permite limpar e higienizar completamente os vasos sanitários pulverizando uma espuma compacta, enxaguando e aspirando.",
     image: foamtec,
     category: "equipamentos",
     line: "profissional",
@@ -529,8 +532,8 @@ export const products: Product[] = [
     id: "29",
     sku: "REF-MOP-BLCK",
     name: "Foamtec30 Bateria",
-    shortDescription: "Máxima performance em limpeza profissional",
-    description: "Equipamento com tecnologia de extração de espuma densa, ideal para higienização pesada. Oferece alta resistência e eficiência em lavagens frequentes.",
+    shortDescription: "Powertec30-Battery é uma máquina inovadora, patenteada pela Santoemma, com energia a bateria.",
+    description: "Powertec30-Battery é uma máquina inovadora, patenteada pela Santoemma, com energia a bateria. Ele permite limpar e higienizar banheiros públicos, borrifando uma espuma fluida, enxaguando e aspirando. A fonte de alimentação da bateria torna a máquina extremamente prática e fácil de usar em qualquer lugar, eliminando o incômodo do cabo. É ideal para hospitais, escolas, universidades, fábricas e qualquer lugar onde trabalhar sem cabo de energia seja uma grande vantagem.",
     image: foamtecbateria,
     category: "equipamentos",
     line: "profissional",
@@ -547,8 +550,8 @@ export const products: Product[] = [
     id: "30",
     sku: "REF-MOP-BLCK",
     name: "Fogger@7micron",
-    shortDescription: "Máxima performance em limpeza profissional",
-    description: "Equipamento com tecnologia de limpeza pesada através de névoa ultrafina, ideal para higienização de ambientes hospitalares e industriais. Oferece alta resistência e eficiência em lavagens frequentes.",
+    shortDescription: "Fogger@7micron é uma máquina especialmente projetada para nebulizar um produto sanitizante na forma de névoa seca com partículas de diâmetro de apenas 7 micrômetros.",
+    description: "Fogger@7micron é uma máquina especialmente projetada para nebulizar um produto sanitizante na forma de névoa seca com partículas de diâmetro de apenas 7 micrômetros. A névoa seca é dispensada por tempo suficiente para preencher completamente os cômodos e depois deixada agir por alguns minutos para exercer sua ação sanitizante. Esse tipo de neblina permite secca@7micron chegar a qualquer ponto, sem molhar as superfícies. A máquina pode ser deixada dentro do ambiente para ser tratada. Alternativamente, é possível deixar a máquina fora do ambiente, colocando apenas o tanque do produto dentro. Nesse caso, a conexão entre a máquina e o tanque é feita por meio de uma mangueira de 10 metros de comprimento, fornecida de padrão. Com uma arma específica, também é possível pulverizar névoa seca higienizante diretamente em superfícies de extensão limitada.",
     image: fogger7micron,
     category: "equipamentos",
     line: "profissional",
@@ -560,6 +563,42 @@ export const products: Product[] = [
       colors: ["Azul/Branco"],
     },
     relatedProducts: ["27", "28", "29"],
+  },
+  {
+    id: "31",
+    sku: "OXY-SPRAY-01",
+    name: "OXY-SPRAY",
+    shortDescription: "Produto especial de desinfetamento à base de peróxido de hidrogênio, tanque de 5 litros.",
+    description: "Produto especial de desinfetamento à base de peróxido de hidrogênio, tanque de 5 litros. O OXY-SPRAY pode ser pulverizado em superfícies ou em ambientes.",
+    image: oxySpray,
+    category: "equipamentos",
+    line: "profissional",
+    applications: ["hospitalar", "saúde", "industrial", "comercial"],
+    specs: {
+      material: "5 litros",
+      dimensions: "40cm / 60cm",
+      weight: "Variável",
+      colors: ["Branco"],
+    },
+    relatedProducts: ["32"],
+  },
+  {
+    id: "32",
+    sku: "DESINFETANTE-SPRAY-01",
+    name: "DESINFETANTE SPRAY",
+    shortDescription: "Produto desinfetante especial à base de ácool e clorete de benzalcônio, em embalagem de 5 litros.",
+    description: "Produto desinfetante especial à base de ácool e clorete de benzalcônio, em embalagem de 5 litros. O SANI-SPRAY pode ser pulverizado em superfícies ou em ambientes internos.",
+    image: desinfetanteSpray,
+    category: "equipamentos",
+    line: "profissional",
+    applications: ["hospitalar", "saúde", "industrial", "comercial"],
+    specs: {
+      material: "5 litros",
+      dimensions: "40cm / 60cm",
+      weight: "Variável",
+      colors: ["Branco"],
+    },
+    relatedProducts: ["31"],
   },
 ];
 
