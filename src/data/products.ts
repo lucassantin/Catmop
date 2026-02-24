@@ -395,8 +395,8 @@ export const products: Product[] = [
     line: "profissional",
     applications: ["dps", "area-servico"],
     specs: {
-      material: "Plástico ABS e borracha",
-      dimensions: "50 cm",
+      material: "Plástico",
+      dimensions: "30 cm",
       weight: "0.4 kg",
       colors: ["Cinza/Verde"],
     },
@@ -468,9 +468,9 @@ export const products: Product[] = [
     applications: ["industrial", "comercial"],
     specs: {
       material: "Poliéster microfibra",
-      dimensions: "40cm / 60cm",
-      weight: "Variável",
-      colors: ["Azul/Branco"],
+      dimensions: "40cm",
+      weight: "0.2Kg",
+      colors: ["Branco"],
     },
     relatedProducts: [],
   },
