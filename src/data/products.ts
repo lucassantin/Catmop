@@ -5,6 +5,7 @@ import carroFuncional from "@/assets/products/carro-funcional.jpg";
 import placaSinalizadora from "@/assets/products/placa-sinalização-piso.png";
 import oxySpray from "@/assets/products/OXY-SPRAY.jpg";
 import desinfetanteSpray from "@/assets/products/OXY-SPRAY.jpg";
+import panomicro from "@/assets/products/pano-microfibra.png";
 
 import refilMicrofibra from "@/assets/products/refil-microfibra.jpg";
 import paAutomatica from "@/assets/products/pa-automatica.jpg";
@@ -599,6 +600,24 @@ export const products: Product[] = [
       colors: ["Branco"],
     },
     relatedProducts: ["31"],
+  },
+  {
+    id: "33",
+    sku: "PANO-MICRO-01",
+    name: "Pano Microfibra",
+    shortDescription: "Pano de Microfibra 40x60 Caebi com 4 Cores – Máxima Absorção, Versatilidade e Limpeza Profissional",
+    description: "O Pano de Microfibra 40x60 Caebi com 4 cores é a solução ideal para quem busca alto desempenho na limpeza, praticidade no dia a dia e excelente custo-benefício. Produzido com microfibra de alta qualidade, esse pano oferece remoção eficiente de sujeira, poeira e líquidos, garantindo superfícies limpas, secas e sem marcas.",
+    image: panomicro,
+    category: "acessorios",
+    line: "profissional",
+    applications: ["hospitalar", "saúde", "industrial", "comercial"],
+    specs: {
+      material: "Microfibra",
+      dimensions: "40cm X 60cm",
+      weight: "Variável",
+      colors: ["Azul", "Amarelo", "Vermelho", "Verde"],
+    },
+    relatedProducts: ["23"],
   },
 ];
 
