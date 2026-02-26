@@ -108,7 +108,7 @@ const ContactPage = () => {
                     <Mail size={20} className="text-primary shrink-0 lg:w-6 lg:h-6" />
                     <div>
                       <h3 className="font-semibold text-sm lg:text-base">E-mail</h3>
-                      <p className="text-xs lg:text-sm text-muted-foreground break-all">contato@catmop.com.br</p>
+                      <p className="text-xs lg:text-sm text-muted-foreground break-all">catmop@catmop.com.br</p>
                     </div>
                   </div>
 

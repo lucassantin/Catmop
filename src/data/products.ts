@@ -628,7 +628,7 @@ export const segments = [
     slug: "hospitalar",
     description: "Soluções para hospitais, clínicas e laboratórios com foco em higienização e controle de infecções.",
     icon: "Hospital",
-    recommendedProducts: ["1", "3", "4", "6"],
+    recommendedProducts: ["1", "3", "4", "6", "19", "12", "25", "26"]
   },
   {
     id: "industrial",
@@ -636,7 +636,7 @@ export const segments = [
     slug: "industrial",
     description: "Equipamentos robustos para fábricas, galpões e áreas de grande circulação.",
     icon: "Factory",
-    recommendedProducts: ["2", "3", "4"],
+    recommendedProducts: ["2", "3", "4", "18", "14", "12"],
   },
   {
     id: "corporativo",
@@ -644,7 +644,7 @@ export const segments = [
     slug: "corporativo",
     description: "Soluções discretas e eficientes para escritórios, coworkings e prédios comerciais.",
     icon: "Building",
-    recommendedProducts: ["1", "5", "7"],
+    recommendedProducts: ["1", "5", "7", "12", "14", "18", "20", "24"],
   },
   {
     id: "hotelaria",

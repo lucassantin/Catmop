@@ -99,11 +99,11 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
             <span>(11) 9 4762-1792</span>
           </a>
           <a
-            href="mailto:contato@catmop.com.br"
+            href="mailto:catmop@catmop.com.br"
             className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors min-h-[44px]"
           >
             <Mail size={16} />
-            <span>contato@catmop.com.br</span>
+            <span>catmop@catmop.com.br</span>
           </a>
           <div className="flex items-start gap-3 text-sm text-muted-foreground">
             <MapPin size={16} className="shrink-0 mt-0.5" />

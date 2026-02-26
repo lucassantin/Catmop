@@ -126,7 +126,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="mailto:contato@catmop.com.br"
+                  href="mailto:catmop@catmop.com.br"
                   className="flex items-center gap-3 text-background/70 hover:text-primary transition-colors text-sm"
                 >
                   <Mail size={18} className="text-primary shrink-0" />
