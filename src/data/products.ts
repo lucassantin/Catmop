@@ -35,6 +35,7 @@ import sabrina from "@/assets/products/SABRINA-FOAM.jpg";
 import foamtec from "@/assets/products/Foamtec30.jpg";
 import fogger7micron from "@/assets/products/fogger7micron.jpg";
 import foamtecbateria from "@/assets/products/foamtecbateria.jpg";
+import pulferisadorEletrostatico from "@/assets/products/pulverizador.png"
 
 export interface Product {
   id: string;
@@ -87,13 +88,13 @@ export const categories: Category[] = [
     description: "Carros multiuso para transporte de materiais",
     icon: "Truck",
   },
-  //{
-  //  id: "equipamentos",
-  //  name: "Máquinas e Equipamentos",
-  //  slug: "equipamentos",
-  //  description: "Equipamentos e máquinas para limpeza completa de ambientes",
-  //  icon: "Wrench",
-  //},
+  {
+    id: "equipamentos",
+    name: "Máquinas e Equipamentos",
+    slug: "equipamentos",
+    description: "Equipamentos e máquinas para limpeza completa de ambientes",
+    icon: "Wrench",
+  },
   {
     id: "vidros",
     name: "Limpeza de Vidros",
@@ -618,6 +619,24 @@ export const products: Product[] = [
       colors: ["Azul", "Amarelo", "Vermelho", "Verde"],
     },
     relatedProducts: ["23"],
+  },
+  {
+    id: "34",
+    sku: "PULVERIZADOR-ELETROSTATICO-01",
+    name: "Pulverizador eletrostático",
+    shortDescription: "Pulverizador eletrostático para aplicação de desinfetantes em ambientes e superfícies",
+    description: "O Minion 2.0 sopra  250 m³ por minuto de ar carregado negativamente, enquanto pulveriza o desinfetante a uma taxa ajustável de 50 ml  – 70 ml  / min. O fluxo de 500 W/cm3 de íons negativos atrai partículas carregadas positivamente no ar ou superfícies, como poeira, pólen e patógenos de origem viral, bacteriana ou fúngica, neutralizando e tornando-os mais pesados para descer no chão ou permanecer na superfície",
+    image: pulferisadorEletrostatico,
+    category: "equipamentos",
+    line: "profissional",
+    applications: ["hospitalar", "saúde", "industrial", "comercial"],
+    specs: {
+      material: "Plástico reforçado e componentes eletrônicos",
+      dimensions: "40cm / 60cm",
+      weight: "950 gramas",
+      colors: ["Branco e Verde"],
+    },
+    relatedProducts: ["31"],
   },
 ];
 
