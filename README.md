@@ -1,4 +1,4 @@
-### Passo a passo para rodar o projeto localmente
+# Passo a passo para rodar o projeto localmente
 
 ## Clone o repositório pelo terminal
 *Garanta que você tenha git instalador em sua máquina*
@@ -27,10 +27,11 @@ Feito isto, acesse no seu navegador o seguinte endereço para acessar a respecti
 https://localhost:8080
 `
 
-### Suporte
+# Suporte
 *Caso tenha dúvidas ou dificuldades em lidar e entender a estrutura do projeto, por favor, entre em contato*
 
 ##Contato
+
 *email:* `lucasdossantossantin@gmail.com` *whatsapp:* `48988247011`
 
 
